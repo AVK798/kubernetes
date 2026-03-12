@@ -43,6 +43,6 @@ spec:
  containers:
   - name: debug
     image: debug
- env: 
-  name: Username
-  value: EMP2456
+    env: 
+      key: Username
+      value: EMP2456
