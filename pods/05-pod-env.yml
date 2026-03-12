@@ -50,12 +50,14 @@ spec:
     #   - name: username
     #     value: "EMP2456"
     envFrom:
-      configMapKeyRef:
+      configMapRef:
         name: raw-data
+    env:
+      - name: sample
         valueFrom: 
-          configMapRef:
-            key: URL
-            
+         configMapKeyRef:
+              key: URl
+              
         
 
 
