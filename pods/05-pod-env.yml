@@ -52,10 +52,8 @@ spec:
     envFrom:
       - configMapRef:
           name: raw-data
-    env:
-      - name: sample
-        valueFrom: 
-         configMapKeyRef:
+          valueFrom: 
+           configMapKeyRef:
               key: cmd
               name: raw-data
               
