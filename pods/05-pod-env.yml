@@ -46,6 +46,25 @@ spec:
     command:
       - sleep 
       - "1000"
-    env: 
-      - name: username
-        value: "EMP2456"
+    # env: 
+    #   - name: username
+    #     value: "EMP2456"
+    envFrom:
+      configMapKeyRef:
+        name: raw-data
+        valueFrom: 
+          configMapRef:
+            key: URL
+            
+        
+
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: raw-data
+data:
+ URl: google.com
+ cmd: ping
