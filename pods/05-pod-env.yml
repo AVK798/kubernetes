@@ -44,5 +44,5 @@ spec:
   - name: debug
     image: debug
  env: 
-  key: Username
+  name: Username
   value: EMP2456
