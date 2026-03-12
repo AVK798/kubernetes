@@ -51,7 +51,7 @@ spec:
     #     value: "EMP2456"
     envFrom:
       - configMapRef:
-        name: raw-data
+          name: raw-data
     env:
       - name: URl
         valueFrom: 
