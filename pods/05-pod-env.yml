@@ -53,10 +53,9 @@ spec:
       - configMapRef:
           name: raw-data
     env:
-      - name: URl
+      - name: sample
         valueFrom: 
          configMapKeyRef:
-              key: URl
               name: raw-data
               
         
