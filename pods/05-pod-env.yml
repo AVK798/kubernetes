@@ -46,5 +46,5 @@ spec:
     command:
       sleep: "1000"
     env: 
-      name: username
-      value: 'EMP2456'
+      - key: username
+        value: 'EMP2456'
