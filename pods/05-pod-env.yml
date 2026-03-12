@@ -43,6 +43,8 @@ spec:
  containers:
   - name: debug
     image: debug
+    command:
+      sleep: "1000"
     env: 
       key: Username
       value: EMP2456
