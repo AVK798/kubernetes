@@ -55,7 +55,7 @@ spec:
           valueFrom: 
            configMapKeyRef:
               key: cmd
-              name: raw-data
+              
               
         
 
