@@ -12,8 +12,8 @@ spec:
     volumeMounts:
     - mountPath: /data
       name: test-volume
-  volumes:
-  - name: test-volume
-    awsElasticBlockStore:
-      volumeID: "vol-02b5374bd3e218f6a"
-      fsType: ext4
+  # volumes:
+  # - name: test-volume
+  #   awsElasticBlockStore:
+  #     volumeID: "vol-02b5374bd3e218f6a"
+  #     fsType: ext4
