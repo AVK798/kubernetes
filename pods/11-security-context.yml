@@ -4,8 +4,8 @@ metadata:
   name: security
 spec:
   containers:
-    - name: readiness
-      image: rkalluru/zs01-security
+    - name: secuirty-context
+      image: debug
       imagePullPolicy: Always
       securityContext:
         #runAsUser: 1000
@@ -20,7 +20,7 @@ spec:
     - name: docker
       image: docker
       securityContext:
-        privileged: true
+        runAsNonRoot: false
       command:
       - sleep
       - "1000000"
