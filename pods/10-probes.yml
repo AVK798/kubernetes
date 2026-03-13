@@ -4,8 +4,8 @@ metadata:
   name: readiness
 spec:
   containers:
-    - name: readiness
-      image: rkalluru/zs01-readiness
+    - name: centos
+      image: centos:7
       readinessProbe:
         exec:
           command:
