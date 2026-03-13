@@ -41,8 +41,8 @@ metadata:
 spec:
   replicas: 2
   selector:
-   matchLables:
-     app: frontend
+    matchLables:
+      app: frontend
   template:
     metadata:
       labels:
