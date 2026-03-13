@@ -1,44 +1,61 @@
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: st1
-provisioner: kubernetes.io/aws-ebs
-parameters:
-  type: st1
-reclaimPolicy: Delete
-allowVolumeExpansion: true
-mountOptions:
-  - debug
-volumeBindingMode: Immediate
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pvc-sc
-spec:
-  storageClassName: st1
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 130Gi
----
+# ---
+# apiVersion: storage.k8s.io/v1
+# kind: StorageClass
+# metadata:
+#   name: st1
+# provisioner: kubernetes.io/aws-ebs
+# parameters:
+#   type: st1
+# reclaimPolicy: Delete
+# allowVolumeExpansion: true
+# mountOptions:
+#   - debug
+# volumeBindingMode: Immediate
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: pvc-sc
+# spec:
+#   storageClassName: st1
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 130Gi
+# ---
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: pod-pvc-sc
+# spec:
+#   containers:
+#     - image: centos:7
+#       name: test-container
+#       command:
+#         - sleep
+#         - "10000"
+#       volumeMounts:
+#         - mountPath: /test-pd
+#           name: test-volume
+#   volumes:
+#       - name: test-volume
+#         persistentVolumeClaim:
+#           claimName: pvc-sc
+
+
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-pvc-sc
+  name: storage-demo
 spec:
   containers:
-    - image: centos:7
-      name: test-container
-      command:
-        - sleep
-        - "10000"
-      volumeMounts:
-        - mountPath: /test-pd
-          name: test-volume
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - mountPath: /data
+      name: storage-volume
   volumes:
-      - name: test-volume
-        persistentVolumeClaim:
-          claimName: pvc-sc
+  - name: storage-volume
+    persistentVolumeClaim:
+      claimName: demo-pvc
