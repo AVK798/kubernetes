@@ -1,32 +1,54 @@
+# apiVersion: apps/v1
+# kind: ReplicaSet
+# metadata:
+#   name: frontend
+#   labels:
+#     app: guestbook
+#     tier: frontend
+# spec:
+#   # modify replicas according to your case
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       tier: frontend
+#   template:
+#     metadata:
+#       labels:
+#         tier: frontend
+#     spec:
+#       containers:
+#       - name: php-redis
+#         image: nginx
+# # ---
+# # apiVersion: v1
+# # kind: Pod
+# # metadata:
+# #   name: frontend
+# #   labels:
+# #     tier: frontend
+# # spec:
+# #   containers:
+# #   - name: nginx
+# #     image: nginx
+
+
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: frontend
+  name: replicas
   labels:
-    app: guestbook
-    tier: frontend
+    app: frontend
 spec:
-  # modify replicas according to your case
-  replicas: 3
-  selector:
-    matchLabels:
-      tier: frontend
-  template:
+  replicas: 2
+  selectors:
+   matchLables:
+     app: frontend
+   template:
     metadata:
       labels:
-        tier: frontend
+        app: frontend
     spec:
-      containers:
-      - name: php-redis
+     containers:
+      - name: nginx
         image: nginx
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: frontend
-  labels:
-    tier: frontend
-spec:
-  containers:
-  - name: nginx
-    image: nginx
+      
